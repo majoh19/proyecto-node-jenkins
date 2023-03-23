@@ -51,4 +51,16 @@ const getInventarios = async (req = request, res = response) => {
     }
 }
 
-module.exports = { createInventario, getInventarios }
+//actualizar
+const updateInventarioByID = async (req = request, res = response) => {
+    try{
+        const {id} = req.params
+        const data = req.body
+        const inventario = await Inventario.findByIdAndUpdate(id, data, {new: true})
+        return res.status(201).json(inventario)
+    }catch(e){
+        return res.status(500).json({msg: "Error general" + e})
+    }
+}
+
+module.exports = { createInventario, getInventarios, updateInventarioByID }

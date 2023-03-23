@@ -34,4 +34,16 @@ const getMarcas = async (req = request, res = response) => {
     }
 }
 
-module.exports = { createMarca, getMarcas }
+const updateMarcaByID = async (req = request, res = response) => {
+    try {
+      const { id } = req.params
+      const data = req.body
+      const marca = await Marca.findByIdAndUpdate(id, data, { new: true })
+      return res.status(201).json(marca)
+    } catch (e) {
+      console.log(e)
+      return res.status(500).json({ msj: 'Error' })
+    }
+  }
+
+module.exports = { createMarca, getMarcas, updateMarcaByID }

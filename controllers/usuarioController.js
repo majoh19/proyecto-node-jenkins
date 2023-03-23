@@ -38,4 +38,16 @@ const getUsuarios = async (req = request, res = response) => {
     }
 }
 
-module.exports = { createUsuario, getUsuarios }
+const updateUsuarioByID = async (req = request, res = response) => {
+    try {
+      const { id } = req.params
+      const data = req.body
+      const usuario = await Usuario.findByIdAndUpdate(id, data, { new: true })
+      return res.status(201).json(usuario)
+    } catch (e) {
+      console.log(e)
+      return res.status(500).json({ msj: 'Error' })
+    }
+  }
+
+module.exports = { createUsuario, getUsuarios, updateUsuarioByID }

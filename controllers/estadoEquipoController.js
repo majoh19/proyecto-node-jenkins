@@ -36,4 +36,17 @@ const getEstadoEquipos = async (req = request, res = response) => {
     }
 }
 
-module.exports = { createEstadoEquipo, getEstadoEquipos }
+//actualizar
+const updateEstadoEquipoByID = async (req = request, res = response) => {
+    try {
+      const { id } = req.params
+      const data = req.body
+      const estadoEquipo = await EstadoEquipo.findByIdAndUpdate(id, data, { new: true })
+      return res.status(201).json(estadoEquipo)
+    } catch (e) {
+      console.log(e)
+      return res.status(500).json({ msj: 'Error' })
+    }
+  }
+
+module.exports = { createEstadoEquipo, getEstadoEquipos, updateEstadoEquipoByID }

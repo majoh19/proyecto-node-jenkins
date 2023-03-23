@@ -36,4 +36,16 @@ const getTipoEquipos = async (req = request, res = response) => {
     }
 }
 
-module.exports = { createTipoEquipo, getTipoEquipos }
+const updateTipoEquipoByID = async (req = request, res = response) => {
+    try {
+      const { id } = req.params
+      const data = req.body
+      const tipoEquipo = await TipoEquipo.findByIdAndUpdate(id, data, { new: true })
+      return res.status(201).json(tipoEquipo)
+    } catch (e) {
+      console.log(e)
+      return res.status(500).json({ msj: 'Error' })
+    }
+  }
+
+module.exports = { createTipoEquipo, getTipoEquipos, updateTipoEquipoByID }
