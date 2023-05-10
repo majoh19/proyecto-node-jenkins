@@ -1,19 +1,16 @@
 const { Schema, model } = require('mongoose')
 
-const UsuarioSchema = Schema({
+const UniversidadSchema = Schema({
     nombre: {
         type: String,
         required: [true, 'Nombre requerido']
     },
-    email: {
+    direccion: {
         type: String,
-        required: [true, 'Email requerido'],
-        unique: true
+        required: [true, 'Direccion requerida']
     },
-    estado: {
-        type: Boolean,
-        default: true,
-        required: true
+    telefono: {
+        type: String,
     },
     fechaCreacion: {
         type: Date,
@@ -25,4 +22,4 @@ const UsuarioSchema = Schema({
     }
 })
 
-module.exports = model('Usuario', UsuarioSchema)
+module.exports = model('Universidad', UniversidadSchema)

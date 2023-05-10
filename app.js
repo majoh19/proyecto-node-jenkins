@@ -3,26 +3,22 @@ const app = express()
 const cors = require('cors')
 
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(cors({
-    origin: 'https://ornate-kataifi-af0fb1.netlify.app',
-    methods: 'GET, POST, PUT, DELETE',
-    allowedHeaders: 'Content-Type, Authorization'
-}))
+app.use(express.urlencoded({ extended: false }))
+app.use(cors({ origin: '*' }))
 
-const tipoEquipo = require('./routes/tipoEquipoRoute')
-app.use('/api/tiposequipos', tipoEquipo)
+const tipoProyecto = require('./routes/tipoProyecto')
+app.use('/api/tiposproyectos', tipoProyecto)
 
-const estadoEquipo = require('./routes/estadoEquipoRoute')
-app.use('/api/estadosequipos', estadoEquipo)
+const cliente = require('./routes/cliente')
+app.use('/api/clientes', cliente)
 
-const usuario = require('./routes/usuarioRoute')
-app.use('/api/usuarios', usuario)
+const universidad = require('./routes/universidad')
+app.use('/api/universidades', universidad)
 
-const marca = require('./routes/marcaRoute')
-app.use('/api/marcas', marca)
+const etapa = require('./routes/etapa')
+app.use('/api/etapas', etapa)
 
-const inventario = require('./routes/inventarioRoute')
-app.use('/api/inventarios', inventario)
+const proyecto = require('./routes/proyecto')
+app.use('/api/proyectos', proyecto)
 
 module.exports = app
