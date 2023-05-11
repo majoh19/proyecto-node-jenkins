@@ -4,9 +4,10 @@ const { request, response } = require("express")
 //crear
 const createCliente = async (req = request, res = response) => {
     try {
+        const email = req.body.email
         const nombre = req.body.nombre ? req.body.nombre.toUpperCase() : ""
         const data = {
-            nombre
+            nombre, email
         }
         const cliente = new Cliente(data)
         console.log(cliente)

@@ -15,4 +15,4 @@ const EtapaSchema = Schema({
     }
 })
 
-module.exports = model('Etapa', EtapaSchema)
+module.exports = model('Etapa', EtapaSchema) 

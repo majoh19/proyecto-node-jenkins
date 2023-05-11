@@ -4,9 +4,10 @@ const { request, response } = require("express")
 //crear
 const createUniversidad = async (req = request, res = response) => {
     try {
+        const direccion = req.body.direccion ? req.body.direccion.toUpperCase() : ""
         const nombre = req.body.nombre ? req.body.nombre.toUpperCase() : ""
         const data = {
-            nombre
+            nombre, direccion
         }
         const universidad = new Universidad(data)
         console.log(universidad)

@@ -1,4 +1,4 @@
-const Etapa = require("../models/universidad")
+const Etapa = require("../models/etapa")
 const { request, response } = require("express")
 
 //crear
@@ -44,4 +44,4 @@ const getEtapa = async (req = request, res = response) => {
     }
 }*/
 
-module.exports = { createEtapa, getEtapa, /*updateEtapaByID*/ }
+module.exports = { createEtapa, getEtapa, /*updateEtapaByID*/ } 
