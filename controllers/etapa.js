@@ -32,16 +32,17 @@ const getEtapa = async (req = request, res = response) => {
 }
 
 //editar
-/*const updateEtapaByID = async (req = request, res = response) => {
+const updateEtapaByID = async (req = request, res = response) => {
     try {
-        const { id } = req.params
+        const id = req.params.id
         const data = req.body
+        data.fechaActualizacion = new Date()
         const etapa = await Etapa.findByIdAndUpdate(id, data, { new: true })
         return res.status(201).json(etapa)
     } catch (e) {
         console.log(e)
         return res.status(500).json({ msj: 'Error' })
     }
-}*/
+}
 
-module.exports = { createEtapa, getEtapa, /*updateEtapaByID*/ } 
+module.exports = { createEtapa, getEtapa, updateEtapaByID } 

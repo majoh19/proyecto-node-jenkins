@@ -6,8 +6,10 @@ const createCliente = async (req = request, res = response) => {
     try {
         const email = req.body.email
         const nombre = req.body.nombre ? req.body.nombre.toUpperCase() : ""
+        const clienteDB = await Cliente.findOne({ nombre, email })
         const data = {
-            nombre, email
+            nombre,
+            email
         }
         const cliente = new Cliente(data)
         console.log(cliente)
@@ -18,7 +20,9 @@ const createCliente = async (req = request, res = response) => {
             msg: "Error general" + e
         })
     }
+
 }
+
 
 //listar
 const getCliente = async (req = request, res = response) => {
@@ -33,16 +37,16 @@ const getCliente = async (req = request, res = response) => {
 }
 
 //editar
-/*const updateClienteByID = async (req = request, res = response) => {
+const updateClienteByID = async (req = request, res = response) => {
     try {
         const { id } = req.params
         const data = req.body
         const cliente = await Cliente.findByIdAndUpdate(id, data, { new: true })
         return res.status(201).json(cliente)
-    } catch (e) {
+      } catch (e) {
         console.log(e)
         return res.status(500).json({ msj: 'Error' })
-    }
-}*/
+      }
+}
 
-module.exports = { createCliente, getCliente, /*updateClienteByID*/ }
+module.exports = { createCliente, getCliente, updateClienteByID }

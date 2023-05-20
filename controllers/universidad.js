@@ -33,16 +33,17 @@ const getUniversidad = async (req = request, res = response) => {
 }
 
 //editar
-/*const updateUniversidadByID = async (req = request, res = response) => {
+const updateUniversidadByID = async (req = request, res = response) => {
     try {
-        const { id } = req.params
+        const id = req.params.id
         const data = req.body
+        data.fechaActualizacion = new Date()
         const universidad = await Universidad.findByIdAndUpdate(id, data, { new: true })
         return res.status(201).json(universidad)
     } catch (e) {
         console.log(e)
         return res.status(500).json({ msj: 'Error' })
     }
-}*/
+}
 
-module.exports = { createUniversidad, getUniversidad, /*updateUniversidadByID*/ }
+module.exports = { createUniversidad, getUniversidad, updateUniversidadByID }

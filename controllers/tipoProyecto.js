@@ -33,16 +33,17 @@ const getTipoProyecto = async (req = request, res = response) => {
 
 
 //editar
-/*const updateTipoProyectoByID = async (req = request, res = response) => {
+const updateTipoProyectoByID = async (req = request, res = response) => {
     try {
         const { id } = req.params
         const data = req.body
-        const tipoProyecto = await TipoProyecto.findByIdAndUpdate(id, data, { new: true })
+        data.fechaActualizacion = new Date()
+        const tipoProyecto = await TipoProyecto.findByIdAndUpdate(ObjectId(id), data, { new: true })
         return res.status(201).json(tipoProyecto)
     } catch (e) {
         console.log(e)
         return res.status(500).json({ msj: 'Error' })
     }
-}*/
+}
 
-module.exports = { createTipoProyecto, getTipoProyecto, /*updateTipoProyectoByID*/ }
+module.exports = { createTipoProyecto, getTipoProyecto, updateTipoProyectoByID }
