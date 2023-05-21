@@ -1,7 +1,7 @@
 const TipoProyecto = require("../models/tipoProyecto")
 const Cliente = require("../models/cliente")
 const Universidad = require("../models/universidad")
-const Etapa = require("../models/universidad")
+const Etapa = require("../models/etapa")
 const Proyecto = require("../models/proyecto")
 const { request, response } = require("express")
 
@@ -67,4 +67,17 @@ const getProyecto = async (req = request, res = response) => {
     }
 }
 
-module.exports = { createProyecto, getProyecto }
+//editar
+const updateProyectoByID = async (req = request, res = response) => {
+    try {
+        const { id } = req.params
+        const data = req.body
+        data.fechaActualizacion = new Date()
+        const proyecto = await Proyecto.findByIdAndUpdate(id, data, { new: true })
+        return res.status(201).json(proyecto)
+    } catch (e) {
+        return res.status(500).json({ msg: "Error general" + e })
+    }
+}
+
+module.exports = { createProyecto, getProyecto, updateProyectoByID }

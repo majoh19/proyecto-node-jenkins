@@ -1,5 +1,5 @@
 {
-  "name": "backend-proyecto",
+  "name": "backend-proyecto-micro",
   "version": "1.0.0",
   "description": "API REST Proyectos",
   "main": "server.js",

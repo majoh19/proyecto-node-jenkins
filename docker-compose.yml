@@ -3,13 +3,13 @@ version: "3.9"
 
 #definir servicios
 services:
-  proyectos-backend:
-    container_name: proyectos-backend
-    image: proyectos-backend:v1
+  proyectos-backend-micro:
+    container_name: proyectos-backend-micro
+    image: proyectos-backend-micro:v1
     build:
       context: .
     ports:
-      - 4000:4000
+      - 4001:4001
     networks:
       - proyectos-app
 

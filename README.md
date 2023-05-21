@@ -12,10 +12,6 @@ The app is designed to manage projects. It allows to create and list various typ
 ***
 
 ## System modules
-* Tipo Proyecto
-* Cliente
-* Universidad
-* Etapa
 * Proyecto
 
 ***
