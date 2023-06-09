@@ -10,14 +10,9 @@ services:
       context: .
     ports:
       - "4001"
-    networks:
-      - proyectos-app
-
-  proyectos-backend-micro-2:
-    container_name: proyectos-backend-micro-2
-    image: proyectos-backend-micro:v1
-    ports:
-      - "4001"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - PORT=4001
     networks:
       - proyectos-app
 
