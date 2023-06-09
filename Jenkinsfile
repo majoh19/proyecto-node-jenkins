@@ -11,10 +11,12 @@ pipeline {
         }
         stage('Build imagen Docker') {
             steps {
-                withCredentials({
-                    string(credentialsId: 'MONGO_URI', variable: 'MONGO_URI')
-                }) {
-                    docker.build('proyectos-backend-micro:v1', '--build-arg MONGO_URI=${MONGO_URI} .')
+                script {
+                    withCredentials({
+                        string(credentialsId: 'MONGO_URI', variable: 'MONGO_URI')
+                    }) {
+                        docker.build('proyectos-backend-micro:v1', '--build-arg MONGO_URI=${MONGO_URI} .')
+                    }
                 }
             }
         }
