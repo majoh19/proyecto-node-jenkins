@@ -3,9 +3,9 @@ version: "3.9"
 
 #definir servicios
 services:
-  proyectos-backend-micro:
-    container_name: proyectos-backend-micro
-    image: proyectos-backend-micro:v1
+  proyectos-backend-micro-jenkins:
+    container_name: proyectos-backend-micro-jenkins
+    image: proyectos-backend-micro-jenkins:v1
     build:
       context: .
     ports:
@@ -16,13 +16,13 @@ services:
     networks:
       - proyectos-app
 
-  balanceador-carga:
-    container_name: balanceador-carga
-    image: balanceador-carga:v1
+  balanceador-carga-jenkins:
+    container_name: balanceador-carga-jenkins
+    image: balanceador-carga-jenkins:v1
     build:
       context: ./balanceador
     ports:
-      - 4004:80
+      - "4004:80"
     networks:
       - proyectos-app
 
